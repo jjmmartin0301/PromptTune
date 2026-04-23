@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PromptTune – Free AI Prompt Improver (No API, Instant Results)</title>
+  <meta name="description" content="PromptTune helps you write better prompts for ChatGPT, Claude, and other AI tools. Paste your prompt, pick a mode, and get a structured, cleaner version instantly — no account, no API key needed." />
+  <meta name="keywords" content="AI prompt improver, improve ChatGPT prompts, better prompts for AI, prompt engineering tool, free prompt optimizer" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="PromptTune – Free AI Prompt Improver" />
+  <meta property="og:description" content="Make your AI prompts clearer and more effective. Free, instant, no sign-up." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://prompttune.site/" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232d4a3e'/><text x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-size='18' fill='white' font-style='italic'>P</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#2d4a3e" />
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────── -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="PromptTune home">
+      <span class="logo-icon" aria-hidden="true">P</span>
+      PromptTune
+    </a>
+
+    <nav class="site-nav" id="siteNav" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="active">Home</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/contact.html">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">◑</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Hero + Tool ─────────────────────────────── -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero__inner">
+
+      <!-- Left: copy -->
+      <div class="fade-up">
+        <span class="hero__badge">✦ free · no sign-up · instant</span>
+        <h1 class="hero__title" id="hero-title">
+          Better prompts,<br><em>better answers.</em>
+        </h1>
+        <p class="hero__sub">
+          PromptTune rewrites your rough ideas into clear, structured prompts that get consistently better results from ChatGPT, Claude, Gemini — or any AI tool you use.
+        </p>
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <span class="hero__stat-val">5</span>
+            <span class="hero__stat-label">modes</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-val">0</span>
+            <span class="hero__stat-label">sign-ups needed</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-val">100%</span>
+            <span class="hero__stat-label">private</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: tool card -->
+      <div class="fade-up-2">
+        <div class="tool-card">
+          <div class="tool-card__header">
+            <span class="tool-card__title">Prompt Improver</span>
+            <div class="mode-tabs" role="tablist" aria-label="Improvement mode">
+              <button class="mode-tab active" role="tab" data-mode="general" aria-selected="true">General</button>
+              <button class="mode-tab" role="tab" data-mode="coding" aria-selected="false">Coding</button>
+              <button class="mode-tab" role="tab" data-mode="writing" aria-selected="false">Writing</button>
+              <button class="mode-tab" role="tab" data-mode="business" aria-selected="false">Business</button>
+              <button class="mode-tab" role="tab" data-mode="study" aria-selected="false">Study</button>
+            </div>
+          </div>
+
+          <div class="tool-card__body">
+
+            <!-- Input -->
+            <div class="prompt-section">
+              <label class="prompt-label" for="promptInput">
+                Your prompt
+                <span class="char-count" id="charCount">0 chars</span>
+              </label>
+              <textarea
+                class="prompt-textarea"
+                id="promptInput"
+                placeholder="Paste your prompt here — however rough or short. We'll clean it up."
+                rows="5"
+                aria-describedby="charCount"
+              ></textarea>
+
+              <!-- Example chips -->
+              <div class="example-prompts" aria-label="Example prompts">
+                <span style="font-size:0.78rem;color:var(--text-3);align-self:center;">Try:</span>
+                <button class="example-chip" data-text="" type="button">"Explain quantum computing"</button>
+                <button class="example-chip" data-text="" type="button">"Summarize this article"</button>
+                <button class="example-chip" data-text="" type="button">"Help me brainstorm ideas"</button>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="tool-actions">
+              <button class="btn btn-primary" id="improveBtn" type="button">
+                ✦ Improve Prompt
+              </button>
+              <button class="btn btn-secondary" id="clearBtn" type="button">
+                Clear
+              </button>
+            </div>
+
+            <!-- Output -->
+            <div class="output-section" id="outputSection" aria-live="polite" aria-label="Improved prompt">
+              <div class="output-label">
+                <span>Improved prompt</span>
+                <span class="char-count" id="charCountOut"></span>
+              </div>
+              <div class="output-box" id="outputBox" tabindex="0"></div>
+              <div class="output-actions">
+                <button class="btn btn-primary" id="copyBtn" type="button">⊕ Copy</button>
+                <button class="btn btn-secondary" id="againBtn" type="button">↻ Improve Again</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Ad slot: top banner ──────────────────────── -->
+<div class="container">
+  <div class="ad-slot ad-slot--banner" aria-hidden="true">Ad · 728×90</div>
+</div>
+
+<!-- ── How it works ────────────────────────────── -->
+<section class="section section--surface" aria-labelledby="how-title">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">How it works</span>
+      <h2 class="section-title" id="how-title">Three steps, better prompts</h2>
+      <p class="section-sub">No account. No waiting. Just paste your idea and we'll structure it for you.</p>
+    </div>
+
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step__num">01</div>
+        <h3 class="how-step__title">Paste your prompt</h3>
+        <p class="how-step__desc">Drop in whatever you've got — a half-formed question, a single sentence, or a rough paragraph. It doesn't have to be polished.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step__num">02</div>
+        <h3 class="how-step__title">Pick a mode</h3>
+        <p class="how-step__desc">Choose General, Coding, Writing, Business, or Study. Each mode applies a different structure tailored to that context.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step__num">03</div>
+        <h3 class="how-step__title">Copy and use it</h3>
+        <p class="how-step__desc">Get a structured, clear prompt ready to paste into any AI tool. Hit "Improve Again" for additional refinement passes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use cases ───────────────────────────────── -->
+<section class="section" aria-labelledby="usecases-title">
+  <div class="container">
+    <span class="section-tag">Use cases</span>
+    <h2 class="section-title" id="usecases-title">Works for almost anything</h2>
+    <p class="section-sub">From quick questions to complex projects, clearer prompts make a real difference in the answers you get.</p>
+
+    <div class="usecases">
+      <div class="usecase-card">
+        <div class="usecase-icon">⌨</div>
+        <h3 class="usecase-title">Coding</h3>
+        <p class="usecase-desc">Debug scripts, generate functions, explain concepts — structured prompts get you working code faster.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">✍</div>
+        <h3 class="usecase-title">Writing</h3>
+        <p class="usecase-desc">Blog posts, emails, product copy — tell the AI exactly what tone and format you're after.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">📊</div>
+        <h3 class="usecase-title">Business</h3>
+        <p class="usecase-desc">Proposals, reports, cold outreach — professional context gets professional output.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">📖</div>
+        <h3 class="usecase-title">Studying</h3>
+        <p class="usecase-desc">Explain concepts, quiz yourself, summarise chapters — get explanations that actually make sense.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">💡</div>
+        <h3 class="usecase-title">Brainstorming</h3>
+        <p class="usecase-desc">Generate ideas, explore angles, challenge assumptions — prompt structure opens up creative thinking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Benefits ────────────────────────────────── -->
+<section class="section section--alt" aria-labelledby="benefits-title">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">Why PromptTune</span>
+      <h2 class="section-title" id="benefits-title">What makes it different</h2>
+    </div>
+    <div class="benefits-list">
+      <div class="benefit">
+        <div class="benefit-icon">🔒</div>
+        <div class="benefit-text">
+          <h4>Your data stays on your device</h4>
+          <p>Nothing is sent to any server. All transformations happen in your browser. Your prompts are yours.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-text">
+          <h4>Instant results</h4>
+          <p>No API calls, no loading spinners, no rate limits. Results appear in under a second.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🆓</div>
+        <div class="benefit-text">
+          <h4>Completely free</h4>
+          <p>No subscription, no credits, no hidden costs. Use it as much as you need.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-text">
+          <h4>Mode-specific templates</h4>
+          <p>A coding prompt and a writing prompt need different structures. PromptTune knows the difference.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🔁</div>
+        <div class="benefit-text">
+          <h4>Iterative refinement</h4>
+          <p>Not happy with the first pass? Hit "Improve Again" to layer in more depth and precision.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🌐</div>
+        <div class="benefit-text">
+          <h4>Works with any AI</h4>
+          <p>ChatGPT, Claude, Gemini, Mistral — better prompts improve results on every platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Ad slot: in-content rectangle ───────────── -->
+<div class="container">
+  <div class="ad-slot ad-slot--rect" aria-hidden="true">Ad · 300×250</div>
+</div>
+
+<!-- ── FAQ ─────────────────────────────────────── -->
+<section class="section section--surface" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title" id="faq-title">Common questions</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          Is PromptTune free?
+          <span class="icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          Yes, completely. There's no account, no trial period, no credit system. Open the page and use it.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          Does it use AI or call an external API?
+          <span class="icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          No. PromptTune applies a set of rule-based templates entirely in your browser. There are no API calls, no AI models, no external services. Think of it as a smart formatter, not an AI.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          Is my prompt data saved or shared?
+          <span class="icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          Never. Your prompts only exist in your browser. The app saves your last prompt to <code>localStorage</code> as a convenience — so you can pick up where you left off — but nothing is sent to any server. See our <a href="pages/privacy.html">Privacy Policy</a> for details.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          How is this different from just writing a prompt myself?
+          <span class="icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          Most people write prompts the same way they'd ask a colleague — conversationally, without structure. PromptTune adds a role, a clear task definition, formatting guidance, and constraints automatically. It's the difference between "explain recursion" and a well-scoped, structured instruction that gets a genuinely useful answer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          What does "Improve Again" do?
+          <span class="icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          It runs an additional refinement pass on your already-improved prompt. Each pass adds a new layer — things like step-by-step reasoning instructions, edge case handling, or guidance for expert-level depth. You can run it a couple of times to dial in the level of specificity you want.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          Which AI tools does this work with?
+          <span class="icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">
+          All of them. The improved prompts follow general prompt engineering best practices, so they work with ChatGPT, Claude, Gemini, Llama, Mistral, or any other language model. Copy the output and paste it wherever you're working.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Internal links ───────────────────────────── -->
+<section class="section" aria-label="Related pages">
+  <div class="container text-center">
+    <h2 class="section-title" style="font-size:1.5rem;">Want to know more?</h2>
+    <p class="section-sub" style="margin-bottom:24px;">Learn about the project or get in touch if you have questions.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="pages/about.html" class="btn btn-secondary">About the project</a>
+      <a href="pages/contact.html" class="btn btn-secondary">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────── -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="PromptTune home">
+          <span class="logo-icon" aria-hidden="true">P</span>
+          PromptTune
+        </a>
+        <p>A free, private AI prompt improver. No account, no API, no nonsense.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Pages</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/about.html">About</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="pages/privacy.html">Privacy Policy</a></li>
+          <li><a href="pages/terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 PromptTune. Built by an indie developer who got tired of bad prompts.</p>
+      <p><a href="pages/privacy.html">Privacy</a> · <a href="pages/terms.html">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Cookie Banner ────────────────────────────── -->
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie notice" style="display:none;">
+  <p>
+    This site uses cookies for analytics and may display ads via Google AdSense.
+    By continuing to use the site you agree to our <a href="pages/privacy.html">Privacy Policy</a>.
+  </p>
+  <button class="btn btn-primary" id="cookieAccept" type="button">Got it</button>
+</div>
+
+<!-- ── Toast ────────────────────────────────────── -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

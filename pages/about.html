@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – PromptTune</title>
+  <meta name="description" content="Learn why PromptTune was built, what it does, and the thinking behind a simple, private, no-account AI prompt improver." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://prompttune.site/pages/about" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232d4a3e'/><text x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-size='18' fill='white' font-style='italic'>P</text></svg>" />
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="container">
+    <a href="../index.html" class="logo" aria-label="PromptTune home">
+      <span class="logo-icon" aria-hidden="true">P</span>
+      PromptTune
+    </a>
+    <nav class="site-nav" id="siteNav" role="navigation" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">◑</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- Page hero -->
+<section class="page-hero">
+  <div class="container">
+    <p class="page-hero__eyebrow">About</p>
+    <h1 class="page-hero__title">Why PromptTune exists</h1>
+    <p class="page-hero__sub">A small tool built out of frustration — and a belief that better prompts shouldn't require a degree in prompt engineering.</p>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <div class="prose">
+
+      <h2>The problem with vague prompts</h2>
+      <p>
+        Most people use AI tools the same way they'd ask a friend a quick question. "Explain machine learning." "Write me an email." "Help me with this bug." And then they're surprised when the answer is generic, shallow, or completely off the mark.
+      </p>
+      <p>
+        The truth is that language models are highly sensitive to how you frame a question. A well-structured prompt — one that gives the model a role, a clear task, a format, and some constraints — reliably gets better output than a vague one. That's not a secret: it's the whole discipline of prompt engineering.
+      </p>
+      <p>
+        But most people don't want to learn prompt engineering. They just want a good answer. That gap is what PromptTune tries to close.
+      </p>
+
+      <h2>What PromptTune actually does</h2>
+      <p>
+        PromptTune is not AI. It doesn't call any external service or language model. It's a rule-based template engine running entirely in your browser. You paste in your rough idea, pick a mode (General, Coding, Writing, Business, or Study), and the tool applies a structured template that includes:
+      </p>
+      <ul>
+        <li>A role assignment for the model ("Act as a senior software engineer…")</li>
+        <li>A clear task framing ("Your task is to help me with…")</li>
+        <li>Format instructions ("Provide working code with inline comments…")</li>
+        <li>Constraints ("Follow best practices, handle edge cases…")</li>
+        <li>Context expansion for short inputs</li>
+      </ul>
+      <p>
+        These patterns come from well-established prompt engineering guides — adapted, simplified, and made practical for everyday use.
+      </p>
+
+      <h2>Built with privacy in mind</h2>
+      <p>
+        Your prompts never leave your device. There's no server, no database, no analytics on what you type. The only thing stored locally is your last prompt (in <code>localStorage</code>) so you don't lose your work if you accidentally close the tab. You can clear that at any time.
+      </p>
+      <p>
+        The site uses standard web analytics (page views, not content) and may show ads via Google AdSense. Neither of these ever touches the prompts you write.
+      </p>
+
+      <h2>Who built it</h2>
+      <p>
+        I'm an indie developer who spends a lot of time working with AI tools. I built PromptTune for myself first — as a quick way to structure prompts without thinking too hard — and then decided to clean it up and put it online in case it's useful to others.
+      </p>
+      <p>
+        It's a small, simple tool. I'm not trying to build a startup around it. If it saves you 30 seconds and gets you a better answer, it's done its job.
+      </p>
+
+      <hr />
+
+      <p>
+        Questions or feedback? <a href="contact.html">Get in touch</a>. I read everything, even if I don't always reply quickly.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- Ad slot -->
+<div class="container">
+  <div class="ad-slot ad-slot--banner" aria-hidden="true">Ad · 728×90</div>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">
+          <span class="logo-icon" aria-hidden="true">P</span>
+          PromptTune
+        </a>
+        <p>A free, private AI prompt improver. No account, no API, no nonsense.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Pages</h5>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 PromptTune. Built by an indie developer who got tired of bad prompts.</p>
+      <p><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie notice" style="display:none;">
+  <p>
+    This site uses cookies for analytics and may display ads via Google AdSense.
+    By continuing, you agree to our <a href="privacy.html">Privacy Policy</a>.
+  </p>
+  <button class="btn btn-primary" id="cookieAccept" type="button">Got it</button>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>
